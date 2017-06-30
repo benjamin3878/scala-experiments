@@ -1,0 +1,15 @@
+#general
+*.class
+*.*~
+logs
+*.logs
+
+#intellij
+.idea
+*.iml
+*.ipr
+*.iws
+
+#gradle
+build/
+.gradle/
