@@ -1,0 +1,32 @@
+group 'org.dev'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'scala'
+
+
+sourceCompatibility = 1.5
+
+sourceSets {
+    main {
+        scala {
+            srcDirs = [ 'src/main' ]
+        }
+    }
+    test {
+        scala {
+            srcDirs = [ 'src/test' ]
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.scala-lang:scala-library:2.12.1'
+
+//    testCompile 'junit:junit:4.12'
+    testCompile 'org.scalatest:scalatest_2.12:3.0.1'
+}
