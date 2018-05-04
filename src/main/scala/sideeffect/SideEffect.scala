@@ -26,8 +26,7 @@ object SideEffect {
 
 */
 
-
-  trait Functor[A, Boxed[_]] {
+  trait Functor[A, Boxed[A]] {
     def map[B](f: A => B): Boxed[B]
   }
 
@@ -35,8 +34,7 @@ object SideEffect {
     override def map[B](f: (A) => B): Option[B] = o.map(f)
   }
 
-
-  implicit class SideFunctor[A, Box[_]](box: Box[A])(implicit vb: Box[A] => Functor[A, Box]) {
+  implicit class SideFunctor[A, Box[A]](box: Box[A])(implicit vb: Box[A] => Functor[A, Box]) {
     def withSideEffect(f: A => Unit): Box[A] = box.map { ele => f(ele); ele }
   }
 

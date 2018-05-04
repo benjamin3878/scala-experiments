@@ -2,7 +2,7 @@ package scala.sideeffect
 
 import org.scalatest.{Matchers, WordSpec}
 
-import scala.sideeffect.SideEffect.{Functor, OptionToFunctor, SideFunctor}
+import scala.sideeffect.SideEffect._
 
 /**
   * Created by vagrant on 04.05.18.
@@ -15,9 +15,11 @@ class SideEffectSpec extends WordSpec with Matchers {
 
   "SideEffect" should {
     "work with an Option" in {
-      val a = OptionToFunctor(Option("str"))
+      var stringValue: String = null
+      Option("str")
+        .withSideEffect(s => stringValue = s)
 
-      Option("str").withSideEffect(println)
+      stringValue shouldBe "str"
     }
   }
 }
